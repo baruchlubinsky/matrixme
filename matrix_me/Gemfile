@@ -22,6 +22,25 @@ end
 
 gem 'jquery-rails'
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'rspec'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'launchy'
+  gem 'mongoid-rspec'
+end
+
+# May be required on EC2 server
+#group :production do
+#  gem 'bigdecimal'
+#  gem 'minitest'
+#end
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
