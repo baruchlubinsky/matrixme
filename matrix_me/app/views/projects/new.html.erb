@@ -1,0 +1,10 @@
+<h1>Create a project</h1>
+<%= form_for(@project) do |f| %>
+    <%= f.label :name, 'Project title' %>
+    <%= f.text_field :name %>
+    <br />
+    <%= f.label :public_template, 'Template '%>
+    <%= f.select :public_template_id, options_for_select(@templates.collect{|t| [t.name, t.id]}) %>
+    <br />
+    <%= f.submit 'Create' %>
+<% end %>

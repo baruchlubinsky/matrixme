@@ -1,0 +1,54 @@
+<nav id='breadcrumb'>
+    <ul>       
+        <% level = 0 %>
+        <% current = @project.template %>
+        <% if @workspace.matrix_location[0] == @project.template.id.to_s %>
+            <li>
+                <%= link_to @project.name, edit_workspace_navigation_path(@workspace, @project.template.id) %>
+                <ul>
+                    <li>
+                        <%= link_to 'Public', edit_workspace_navigation_path(@workspace, ([@project.public_template_id] << @workspace.matrix_location.drop(1)).compact.join(MatrixLocation::Separator)) %>
+                    </li>
+                </ul>
+            </li>
+        <% else %>
+            <li>
+                <%= link_to "Public", edit_workspace_navigation_path(@workspace, @project.public_template_id) %>
+                <ul>
+                    <li>
+                        <%= link_to @project.name, edit_workspace_navigation_path(@workspace, ([@project.template.id.to_s] << @workspace.matrix_location.drop(1)).compact.join(MatrixLocation::Separator)) %>
+                    </li>
+                </ul>
+            </li>
+        <% end %>
+            <li>
+                <%= link_to @project.template.name, edit_workspace_navigation_path(@workspace, @workspace.matrix_location[0]) %>
+                <% if current.child_template_elements.count > 0 %>
+                    <ul>
+                        <% current.child_template_elements.each_with_index do |e, i| %>
+                            <li>
+                                <%= link_to e.name, edit_workspace_navigation_path(@workspace, [@workspace.matrix_location[0], i].join(MatrixLocation::Separator)) %>
+                            </li>
+                        <% end %>
+                    </ul>
+                <% end %>
+            </li>
+        <% level = 1 %>
+        <% while @workspace.matrix_location.count > level %>
+            <% current = current.child_template_elements[@workspace.matrix_location[level].to_i] %>
+            <% level = level + 1 %> 
+            <li>
+                <%= link_to current.name, edit_workspace_navigation_path(@workspace, @workspace.matrix_location.first(level).join(MatrixLocation::Separator)) %>
+                <% if current.child_template_elements.count > 0 %>
+                    <ul>
+                        <% current.child_template_elements.each_with_index do |e, i| %>
+                            <li>
+                                <%= link_to e.name, edit_workspace_navigation_path(@workspace, [@workspace.matrix_location.first(level), i].join(MatrixLocation::Separator)) %>
+                            </li>
+                        <% end %>
+                    </ul>
+                <% end %>
+            </li>        
+        <% end %>
+    </ul>
+</nav>
