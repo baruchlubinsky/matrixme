@@ -16,16 +16,16 @@ class User
 	has_many :workspaces
 	
   def hash_password(pw)
-    self.salt ||= Digest::SHA1.hexdigest(Time.now.to_s)
-    Digest::SHA2.hexdigest(pw + self.salt)
+    salt ||= Digest::SHA1.hexdigest(Time.now.to_s)
+    Digest::SHA2.hexdigest(pw + salt)
   end
     
 	def password=(val)
-	  self.write_attribute(:password, self.hash_password(val))
+	  self.write_attribute(:password, hash_password(val))
 	end
 	
 	def password_match?(pw)
-	  self.hash_password(pw) == self.password
+	  self.hash_password(pw) == password
 	end
 	
 	

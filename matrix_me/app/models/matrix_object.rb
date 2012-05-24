@@ -10,9 +10,9 @@ class MatrixObject
 	
 	field :access_level, :type => String
 	
-	field :location, :type => Array
+	embeds_one :matrix_location, as: :locatable
 	
-	index :location
+	index 'matrix_location.data'
 	
 	belongs_to :user
 	belongs_to :project

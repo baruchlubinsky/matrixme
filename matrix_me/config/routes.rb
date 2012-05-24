@@ -1,4 +1,11 @@
 MatrixMe::Application.routes.draw do
+  resources :users
+  resources :projects
+  resources :workspaces do
+    resources :navigations
+    resources :contexts
+    resources :matrix_objects
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

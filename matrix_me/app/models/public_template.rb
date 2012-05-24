@@ -4,9 +4,9 @@ class PublicTemplate < TemplateElement
   has_many :projects
   
   def create_project_template
-    project = self.copy_structure
+    project = copy_structure
     project._type = 'Template'
-    project[:public_id] = self.id
+    project[:public_id] = id
     return project
   end  
 end
