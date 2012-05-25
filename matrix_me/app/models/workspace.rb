@@ -8,11 +8,20 @@ class Workspace
   
   field :results_per_page, :type => Integer
   
+  field :zoom, :type => String, :default => 'big'
+  
   belongs_to :project
   belongs_to :user
   
+  field :current_object_id, :type => String
+  
   def matrix_objects
-    MatrixObjects.where(:matrix_location => matrix_location)
+    @query = MatrixObject.all
+    self.matrix_location.data.each_with_index do |location, i|
+      @query = @query.where("matrix_location.data.#{i}" => location)
+    end
+    # TODO: implement criteria
+    @query.to_a
   end
   
 end

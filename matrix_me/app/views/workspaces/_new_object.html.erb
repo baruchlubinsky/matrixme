@@ -1,0 +1,23 @@
+<h2>New object</h2>
+<%= form_for [@workspace, @new_matrix_object] do |f| %>
+    <%= f.label :name, 'Name'%>
+    <%= f.text_field :name %>
+    <br />
+    <%= f.label :description, 'Description'%>
+    <%= f.text_field :description %>
+    <br />
+    <%= f.label :_type, 'Object type' %>
+    <%= f.select :_type, @object_types.collect{|o| [o._type, o._type]} %>
+    <br />
+    <div id='attributes'></div>
+    <%= f.submit 'Create' %>
+<% end %>
+<% @object_types.each do |o| %>
+    <div id=<%= o._type %>-attributes>
+        <% o.misc_attributes.each do |key, v| %>
+            <%= label_tag "misc_attributes[#{key}]", attribute_label(key) %>
+            <%= text_field_tag "misc_attributes[#{key}]" %>
+            <br />
+        <% end %>
+    </div>
+<% end %>

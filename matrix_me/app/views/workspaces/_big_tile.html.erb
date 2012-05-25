@@ -1,0 +1,12 @@
+<div class='big_tile'>
+    <%= image_tag 'http://placekitten.com/120/200', :class => 'thumbnail' %>
+    <br />
+    <span class='name'><%= big_tile.name %></span>
+    <br />
+    <span class='description'><%= big_tile.description %></span>
+    <br />
+    <%= form_for @workspace do |f| %>
+        <%= f.hidden_field :current_object_id, :value => big_tile.id %>
+        <%= f.submit 'Show' %>
+    <% end %>
+</div>

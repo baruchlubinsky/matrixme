@@ -4,9 +4,9 @@ class MatrixObject
 	
 	field :name, :type => String
 	
-	field :misc_attributes, :type => Hash
+	field :description, :type => String
 	
-	field :object_type, :type => String
+	field :misc_attributes, :type => Hash
 	
 	field :access_level, :type => String
 	

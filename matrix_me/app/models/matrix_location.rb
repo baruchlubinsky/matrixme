@@ -4,7 +4,7 @@ class MatrixLocation
   Separator = '-'
   
   field :data, :type => Array
-  
+
   embedded_in :locatable, polymorphic: true
   
   def method_missing(name, *args)
