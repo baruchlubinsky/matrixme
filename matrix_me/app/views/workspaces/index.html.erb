@@ -1,0 +1,19 @@
+<h1>Workspaces</h1>
+<table id='projects' >
+    <% @workspaces.each do |w| %>
+        <tr>
+            <td>
+                <%= link_to w.project.name, workspace_path(w) %>
+            </td>
+            <td>
+                <%= form_for Workspace.new do |f| %>
+                    <%= f.select :user, @users.where(:_id.nin => w.project.workspaces.map {|w| w.user_id}).collect {|u| [u.name, u.id]} %>
+                    <%= f.hidden_field :project_id, :value => w.project.id %>
+                    <%= f.submit 'Invite' %>
+                <% end %>
+            </td>
+        </tr>
+    <% end %>
+    
+</table>
+<%= link_to 'Create a new project', new_project_path%>

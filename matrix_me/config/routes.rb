@@ -6,6 +6,18 @@ MatrixMe::Application.routes.draw do
     resources :contexts
     resources :matrix_objects
   end
+  
+  resources :conversations do
+    resources :comments
+  end
+  
+  resources :authorisations
+  
+  match 'login' => 'authorisations#new'
+  match 'logout' => 'authorisations#destroy'
+  
+  root :to => 'workspaces#index'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

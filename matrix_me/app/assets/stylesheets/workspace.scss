@@ -1,0 +1,119 @@
+.hidden
+{
+  display: none;
+}
+
+.visible
+{
+  display: block;
+}
+html, body
+{
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial;
+  position: relative;
+  background-color: rgba(100,100,120,1);
+}
+#container
+{
+  height: 100%;
+  width: 100%;
+  position: relative;
+  margin: 25px;
+  border-radius: 10px;
+  backround-color: rgba(220,220,220,1);
+}
+#user
+{
+  position: absolute;
+  right: 50px;
+  top: 10px;
+  color: white;
+}
+#header
+{
+  width: 100%;
+  padding: 20px;
+  background-image: url('background.png');
+}
+#new_object_button
+{
+  z-index: 5;
+}
+#content
+{
+  position: relative;
+}
+#context
+{
+  position: relative;
+  background-color: rgba(220,220,225, 1);
+  float: left;
+  height: 100%;
+}
+#tiles
+{
+  position: relative;
+  float: left;
+  margin-left: 25px;
+  padding: 5px;
+  width: 450px;
+  height: 100%;
+  overflow: scroll;
+  background-color: rgba(200,200,200,1);
+  margin-bottom: 20px;
+}
+#zoom
+{
+  position: absolute;
+  bottom: 100px;
+  right: 20px;
+}
+#separator
+{
+  width: 7px;
+  height: 100%;
+  background-color:rgba(50,50,50,1);
+  float: left; 
+}
+.draggable
+{
+  cursor: col-resize;
+}
+#detail
+{
+  float: left;
+  height: 100%;
+  background-color: rgba(150,150,200,1);
+  padding: 5px;
+}
+
+#show_context
+{
+  position:absolute;
+  top: 200px;
+  left: 5px;
+  text-align: right;
+}
+#hide_context
+{
+  position:absolute;
+  top: 200px;
+  left: 195px;
+  text-align: right;
+  z-index: 4;
+}
+.collapsed
+{
+  width: 0px;
+  display: none;
+}
+.expanded
+{
+  width: 200px;
+  display: block;
+}
+.clear { clear: both; }

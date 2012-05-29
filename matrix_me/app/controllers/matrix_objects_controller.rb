@@ -1,5 +1,5 @@
 class MatrixObjectsController < ApplicationController
-  #before_filter :check_login
+  before_filter :check_login
   def create
     @workspace = Workspace.find(params[:workspace_id])
     @matrix_object = MatrixObject.new(params[:matrix_object])

@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  #before_filter :check_login
+  before_filter :check_login
   def new
     @project = Project.new
     @templates = PublicTemplate.all.to_a

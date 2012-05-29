@@ -1,0 +1,26 @@
+.big_tile
+{
+  float: left;
+  margin: 5px;
+  width: 160px;
+  height: 270px;
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.description
+{
+  font-size: smaller;
+}
+
+.small_tile
+{
+  float: left;
+  margin: 5px;
+  width: 160px;
+  height: 90px;
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 5px;
+  padding: 10px;
+}

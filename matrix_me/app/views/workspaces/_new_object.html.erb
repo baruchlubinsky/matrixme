@@ -12,12 +12,14 @@
     <div id='attributes'></div>
     <%= f.submit 'Create' %>
 <% end %>
-<% @object_types.each do |o| %>
-    <div id=<%= o._type %>-attributes>
-        <% o.misc_attributes.each do |key, v| %>
-            <%= label_tag "misc_attributes[#{key}]", attribute_label(key) %>
-            <%= text_field_tag "misc_attributes[#{key}]" %>
-            <br />
-        <% end %>
-    </div>
-<% end %>
+<div class='hidden'>
+    <% @object_types.each do |o| %>
+        <div id=<%= o._type %>-attributes>
+            <% o.misc_attributes.each do |key, v| %>
+                <%= label_tag "misc_attributes[#{key}]", attribute_label(key) %>
+                <%= text_field_tag "misc_attributes[#{key}]" %>
+                <br />
+            <% end %>
+        </div>
+    <% end %>
+</div>

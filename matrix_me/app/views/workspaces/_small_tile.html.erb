@@ -1,7 +1,7 @@
 <div class='small_tile'>
     <span class='name'><%= small_tile.name %></span>
     <br />
-    <span class='name'><%= small_tile.description %></span>
+    <span class='description'><%= small_tile.description %></span>
     <br />
     <%= form_for @workspace do |f| %>
         <%= f.hidden_field :current_object_id, :value => small_tile.id %>

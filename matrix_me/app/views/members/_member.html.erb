@@ -1,11 +1,13 @@
-<%= image_tag 'http://placekitten.com/300/400', :class => 'member_image' %>
-<div class='full_info'>
-    <span class='name'><%= member.name %></span>
-    <br />
-    <span class='description'><%= member.description %></span>
-    <br />
-    <% member.misc_attributes.each do |key, val| %>
-        <span class='attr_key'><%= key %></span>:<span class='attr_val'><%= val %></span><br />
-    <% end %>
+<div class='detail_tile'>
+    <%= image_tag 'http://placekitten.com/300/400', :class => 'member_image' %>
+    <div class='full_info'>
+        <span class='name'><%= member.name %></span>
+        <br />
+        <span class='description'><%= member.description %></span>
+        <br />
+        <% member.misc_attributes.each do |key, val| %>
+            <span class='attr_key'><%= attribute_label(key) %></span>:<span class='attr_val'><%= val %></span><br />
+        <% end %>
+    </div>
+    
 </div>
-

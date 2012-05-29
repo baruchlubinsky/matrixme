@@ -16,8 +16,8 @@ class User
 	has_many :workspaces
 	
   def hash_password(pw)
-    salt ||= Digest::SHA1.hexdigest(Time.now.to_s)
-    Digest::SHA2.hexdigest(pw + salt)
+    self.salt ||= Digest::SHA1.hexdigest(Time.now.to_s)
+    Digest::SHA2.hexdigest(pw + self.salt)
   end
     
 	def password=(val)

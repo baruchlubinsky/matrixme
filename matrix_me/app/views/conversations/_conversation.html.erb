@@ -1,1 +1,18 @@
-<%= conversation.name %>
+<div class='detail_tile'>
+    <span id='conversation_name'><h2><%= conversation.name %></h2></span>
+    <% if conversation.comments.count > 0 %>
+        <% conversation.comments.each do |com| %>
+        <div class='comment'>
+            <span class='comment_author'><%= com.user.name %></span>
+            <span class='comment_time'>(at <%= com.created_at %>)</span>
+            <p />
+            <span class='comment_text'><%= com.content %></span>
+        </div>
+        <% end %>
+    <% end %>
+    <%= form_for [conversation, Comment.new] do |f| %>
+        <%= f.label :content, 'Comment' %><br />
+        <%= f.text_area :content, :rows => 4 %><br />
+        <%= f.submit 'Post' %>
+    <% end %>
+</div>

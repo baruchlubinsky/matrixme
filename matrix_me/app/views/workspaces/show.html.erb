@@ -1,6 +1,54 @@
-<h1>Workspace</h1>
-<%= @project.name %>
-<%= render 'breadcrumb' %>
-<%= render 'new_object' %>
-<%= render @current_object unless @current_object.nil? %>
-<%= render :partial => "#{@workspace.zoom}_tile", :collection => @workspace.matrix_objects %>
+<%= content_for :head do %>
+    <style type='text/css'>
+    #tiles
+    {
+        width: <%= @workspace.tiles_width %>;
+    }
+    </style>
+<% end %>
+<div id='container'>
+    <div id='user'>
+        <%= @user.name %> | <%= link_to 'Logout', logout_path %>
+    </div>
+    <div id='header'>
+        <h1>MatrixMe</h1>
+        <%= render 'breadcrumb' %> 
+        <button id='new_object_button'>+</button>
+    </div>
+    <div id='content'>
+        <button id='show_context'>></button>
+        <button id='hide_context' class='hidden'><</button>
+        <div id='context' class='collapsed'>
+            <%= render 'context_menu' %>
+        </div>
+        <div id='tiles' >
+            <%= render :partial => "#{@workspace.zoom}_tile", :collection => @workspace.matrix_objects %>
+            <div id='zoom'>
+                <%= form_for @workspace do |f| %>
+                    <%= f.hidden_field :zoom, :value => @workspace.zoom == 'small' ? 'big' : 'small'  %>
+                    <%= f.submit 'Zoom' %>
+                <% end %>
+            </div>
+        </div>
+        <div id='separator' class='draggable'>
+            
+        </div>
+        <div id='detail'>
+            <%= render @current_object unless @current_object.nil? %>
+        </div>
+        <br class="clear" />
+    </div>
+</div>
+<div id='full_screen_popup' class='hidden'>
+    <div id='popup_container'>
+        <div id='new_object'>
+            <%= render 'new_object' %>
+        </div>
+    </div>
+</div>
+<div id='interface_variables' class='hidden'>
+    <%= form_for @workspace, :remote => true, :format => :json do |f| %>   
+        <%= f.hidden_field :tiles_width %>
+        <%= f.submit :id => 'submit_interface' %>
+    <% end %>
+</div>

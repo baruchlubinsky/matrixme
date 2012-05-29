@@ -1,7 +1,8 @@
 class WorkspacesController < ApplicationController
-  #before_filter :check_login
+  before_filter :check_login
   def index
     @workspaces = @user.workspaces.to_a
+    @users = User.where(:id.ne => @user.id)
   end
   def show
     @workspace = Workspace.find(params[:id])
@@ -14,6 +15,15 @@ class WorkspacesController < ApplicationController
     @workspace = Workspace.find(params[:id])
     @workspace.write_attributes(params[:workspace])
     @workspace.save
-    redirect_to @workspace
+    respond_to do |format|
+      format.html {redirect_to @workspace}
+      format.json {render :json => {:success => true} }
+    end
+  end
+  def create 
+    @workspace = Workspace.new(params[:workspace])
+    @workspace.matrix_location = MatrixLocation.new(:data => [@workspace.project.template.id.to_s])
+    @workspace.save
+    redirect_to :back
   end
 end

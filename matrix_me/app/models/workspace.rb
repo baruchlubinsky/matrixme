@@ -9,6 +9,7 @@ class Workspace
   field :results_per_page, :type => Integer
   
   field :zoom, :type => String, :default => 'big'
+  field :tiles_width, :type => String, :default => '500px'
   
   belongs_to :project
   belongs_to :user

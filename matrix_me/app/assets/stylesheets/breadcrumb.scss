@@ -1,0 +1,44 @@
+#breadcrumb
+{
+  background: #191919;
+  width: 100%;
+  color: white;
+  display: inline-block;
+  list-style: url('arrow.png');
+  a
+  {
+    text-decoration: none;
+    white-space: nowrap;
+    color: #F9F9FC;
+  }
+  li
+  {
+    float: left;
+    position: relative;
+    background: #191919;
+    margin-left: 25px;
+  }
+  ul
+  {
+    display: none;
+    
+    padding: 4px 0 0 0;
+    position: absolute;
+    z-index: 3;
+    top: 15px;
+    left: 0px;
+    background: #191919;
+    border: solid;
+    list-style: none;
+    li
+    {
+      float: none;
+      margin-left: 5px;
+      margin-right: 3px;
+    }
+  }
+  li:hover > ul
+  {
+    display: block;
+  }
+}
